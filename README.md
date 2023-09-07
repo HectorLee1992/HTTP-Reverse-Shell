@@ -20,3 +20,16 @@ python3 server.py
 python3 client.py
 ```
 6. Connection will be established
+Function instuction:
+1. Normal command
+```
+Shell><type your command here>
+```
+2. Pull file
+```
+Shell>pull <which file you want to get from client(full file path in client)>
+```
+3. push file
+```
+Shell>push <which file you want to send to client(full file path in server)>
+```  
