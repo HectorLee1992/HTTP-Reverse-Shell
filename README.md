@@ -20,7 +20,8 @@ python3 server.py
 python3 client.py
 ```
 6. Connection will be established
-Function instuction:
+
+Function instruction:
 1. Normal command
 ```
 Shell><type your command here>
