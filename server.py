@@ -32,8 +32,7 @@ class MyHandler(BaseHTTPRequestHandler):
          self.end_headers()    
          with open('{}'.format(path),'rb') as output_file:
           self.wfile.write(output_file.read())
-         print('Send Files as {}'.format(path))
-         print("File saved as D:\\tmp\\tempfile")    
+         print('Send Files as {}'.format(path))    
         except Exception as e:
          print(e)   
         finally:
