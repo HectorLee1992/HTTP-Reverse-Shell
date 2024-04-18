@@ -28,9 +28,9 @@ Shell><type your command here>
 ```
 2. Pull file
 ```
-Shell>pull <which file you want to get from client(full file path in client)>
+Shell>pull <which file you want to get from client(full file path in client)> <which file you want to save on server(full file path includes file name in server)>
 ```
 3. push file
 ```
-Shell>push <which file you want to send to client(full file path in server)>
+Shell>push <which file you want to send to client(full file path in server)> <which file you want to save on client(full file path includes file name in client)>
 ```  
