@@ -1,7 +1,7 @@
 #Server ----> runs on the attacker's machine
 
 from http.server import BaseHTTPRequestHandler, HTTPServer
-from urllib.parse import parse_qs
+from urllib.parse import parse_qs, urlparse
 import os,cgi
 import base64
 HTTP_STATUS_OK = 200
